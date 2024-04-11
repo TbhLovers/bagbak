@@ -33,7 +33,10 @@ rpc.exports = {
       const dylibPath = [root, relative].join('/');
       if (!Process.findModuleByName(dylibPath)) {
         console.log('load dylib', dylibPath);
-        Module.load(dylibPath);
+
+        try {
+          Module.load(dylibPath);
+        } catch(e) {}
       }
 
       const mod = Process.findModuleByName(basename.toString());

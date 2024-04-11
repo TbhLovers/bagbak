@@ -225,7 +225,10 @@ export class BagBak extends EventEmitter {
       debug('result =>', result);
       await script.unload();
       await session.detach();
-      await this.#device.kill(pid);
+
+      try {
+        await this.#device.kill(pid);
+      } catch(e) {}
     }
 
     await SpringBoardScript.unload();
