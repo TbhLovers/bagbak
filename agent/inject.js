@@ -36,7 +36,9 @@ rpc.exports = {
 
         try {
           Module.load(dylibPath);
-        } catch(e) {}
+        } catch(e) {
+          continue;
+        }
       }
 
       const mod = Process.findModuleByName(basename.toString());
